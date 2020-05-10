@@ -1,13 +1,13 @@
 {
   "name": "nexi",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Nodejs rails-ish port",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "bin": {
-    "migrate": "./bin/migrate",
+    "nexi-migrate": "./bin/migrate",
     "nexi": "./bin/entrypoint"
   },
   "repository": {
@@ -38,6 +38,7 @@
     "helmet": "^3.22.0",
     "http-errors": "^1.7.3",
     "http-status": "^1.4.2",
+    "knex": "^0.21.1",
     "pino": "^6.2.1",
     "pino-pretty": "^4.0.0",
     "response-time": "^2.3.2",

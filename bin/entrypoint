@@ -3,9 +3,9 @@ const path = require('path')
 
 const srcDir = path.join(process.cwd(), 'src')
 require(`${srcDir}/config/boot.js`)
-const Server = require('./server')
-const config = require('./config')(srcDir)
-const logger = require('./logging/logger')(config)
+const Server = require('../src/server')
+const config = require('../src/config')(srcDir)
+const logger = require('../src/logging/logger')(config)
 
 const server = new Server(config, logger)
 
