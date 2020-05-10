@@ -1,0 +1,53 @@
+{
+  "name": "nexi",
+  "version": "0.1.0",
+  "description": "Nodejs rails-ish port",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "bin": {
+    "migrate": "./bin/migrate",
+    "nexi": "./bin/entrypoint"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/tswayne/nexi.git"
+  },
+  "keywords": [
+    "rails",
+    "ruby on rails",
+    "framework"
+  ],
+  "engines": {
+    "node": ">=11.0.0"
+  },
+  "homepage": "https://github.com/tswayne/nexi#readme",
+  "bugs": {
+    "url": "https://github.com/tswayne/nexi/issues"
+  },
+  "dependencies": {
+    "body-parser": "^1.19.0",
+    "class-bindall": "^1.0.0",
+    "compression": "^1.7.4",
+    "connect-redis": "^4.0.4",
+    "deepmerge": "^4.2.2",
+    "express": "^4.17.1",
+    "express-handlebars": "^4.0.4",
+    "express-session": "^1.17.1",
+    "helmet": "^3.22.0",
+    "http-errors": "^1.7.3",
+    "http-status": "^1.4.2",
+    "pino": "^6.2.1",
+    "pino-pretty": "^4.0.0",
+    "response-time": "^2.3.2",
+    "uuid": "^8.0.0"
+  },
+  "devDependencies": {
+    "redis": "^3.0.2",
+    "sails-mysql": "^1.0.1",
+    "waterline-standalone-core": "^1.1.0"
+  },
+  "author": "tswayne",
+  "license": "ISC"
+}
