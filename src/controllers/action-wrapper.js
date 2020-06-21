@@ -1,4 +1,4 @@
-const isAsync = func => func.constructor.name === "AsyncFunction";
+const { isAsync } = require('../utils')
 
 const asyncWrapper = (method, context) => {
    const frameworkAction = async (req, res, next) => {

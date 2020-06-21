@@ -1,5 +1,6 @@
 const express = require('express')
 const decorate = require('./decorators/decorator')
+const initialize = require('./initializers/initializer')
 const Middleware = require('./middleware/middleware')
 const router = require('./router')
 const setupViews = require('./views/setup-views')
@@ -19,6 +20,8 @@ class Server {
         setupViews(app, config)
       }
       const context = await decorate(this.config, this.logger)
+      await initialize(context)
+
       const middleware = new Middleware(context)
       await middleware.setup()
 

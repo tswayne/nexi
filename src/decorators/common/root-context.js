@@ -13,8 +13,6 @@ module.exports = async (config, logger) => {
   }
   if (config.database) {
     context.models = await waterline(config)
-  } else {
-    await Promise.resolve()
   }
 
   return context

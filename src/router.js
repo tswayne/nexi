@@ -63,7 +63,7 @@ class Router {
 const mount = (app, context, middlewareRegistry) => {
   const router = new Router(app, context, middlewareRegistry)
   const routes = require(path.join(context.config.rootDir, 'routes.js'))
-  return routes(app, router)
+  return routes(context, router)
 }
 
 module.exports = mount
