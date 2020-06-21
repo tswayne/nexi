@@ -1,4 +1,4 @@
-[![npm](https://img.shields.io/npm/v/react-helper.svg)](https://www.npmjs.com/package/nexi)
+[![npm](https://img.shields.io/npm/v/nexi.svg)](https://www.npmjs.com/package/nexi)
 
 # Nexi
 ### A rail-ish framework for node.js
