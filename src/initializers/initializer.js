@@ -3,7 +3,7 @@ const fs = require('fs').promises
 const isAsync = func => func.constructor.name === "AsyncFunction";
 
 const getAdditionalDecorators = async (rootDir) => {
-  const filePath = path.join(rootDir, `initializers`)
+  const filePath = path.join(rootDir, `config/initializers`)
   try {
     const files = await fs.readdir(filePath)
     return files.map(file => require(filePath + '/' + file))
