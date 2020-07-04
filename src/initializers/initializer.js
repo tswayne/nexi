@@ -13,7 +13,7 @@ const getAdditionalDecorators = async (rootDir) => {
 }
 
 module.exports = async (context) => {
-  const initializers = await getAdditionalDecorators(context.config.rootDir)
+  const initializers = await getAdditionalDecorators(context.config.srcDir)
   let asyncInitializers = []
   initializers.forEach(initializer => {
     if (isAsync(initializer)) {

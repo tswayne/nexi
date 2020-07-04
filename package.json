@@ -1,6 +1,6 @@
 {
   "name": "nexi",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "Nodejs rails-ish port",
   "main": "index.js",
   "scripts": {
@@ -35,14 +35,14 @@
     "express": "^4.17.1",
     "express-handlebars": "^4.0.4",
     "express-session": "^1.17.1",
-    "helmet": "^3.22.0",
-    "http-errors": "^1.7.3",
+    "helmet": "^3.23.3",
+    "http-errors": "^1.8.0",
     "http-status": "^1.4.2",
     "knex": "^0.21.1",
-    "pino": "^6.2.1",
+    "pino": "^6.3.2",
     "pino-pretty": "^4.0.0",
     "response-time": "^2.3.2",
-    "uuid": "^8.0.0"
+    "uuid": "^8.2.0"
   },
   "devDependencies": {
     "redis": "^3.0.2",
