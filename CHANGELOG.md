@@ -1,5 +1,9 @@
 # Change Log
 
+## [1.0.3] - 1/26/2021
+- Fix initializer directory when app overrides rootDir
+- Bump dependencies
+
 ## [1.0.2] - 7/4/2020
 - Fix initializer directory when app overrides rootDir
 - Bump dependencies
