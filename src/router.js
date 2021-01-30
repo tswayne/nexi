@@ -4,11 +4,11 @@ const ControllerFactory = require('./controllers/factory')
 const actionWrapper = require('./controllers/action-wrapper')
 
 class Router {
-  constructor(router, context, middlewareRegistry, factory) {
+  constructor(router, context, middlewareRegistry, controllerFactory) {
     this.router = router
     this.context = context
     this.middlewareRegistry = middlewareRegistry
-    this.controllerFactory = factory ? factory : new ControllerFactory(context)
+    this.controllerFactory = controllerFactory
   }
 
   route(method) {
@@ -36,6 +36,14 @@ class Router {
     return this.route('post', ...arguments)
   }
 
+  put() {
+    return this.route('put', ...arguments)
+  }
+
+  delete() {
+    return this.route('delete', ...arguments)
+  }
+
   any() {
     return this.route('all', ...arguments)
   }
@@ -51,9 +59,20 @@ class Router {
     this.router.use(path, namespaceRouter)
   }
 
+  //TODO clean, figure out all scenarios want to cover, figure out, test?
   middleware() {
-    const middleWare = this.middlewareRegistry.get(Object.values(arguments))
-    return this.router.use(middleWare)
+    let routerParams = []
+    let middwareMethodNames = Object.values(arguments)
+
+    if (arguments[0].includes("/")) {
+      const path = arguments[0]
+      routerParams = [path]
+      middwareMethodNames = middwareMethodNames.slice(1)
+    }
+
+    const middleWare = this.middlewareRegistry.get(middwareMethodNames)
+    routerParams.push(...middleWare)
+    return this.router.use(...routerParams)
   }
 
 
@@ -61,9 +80,10 @@ class Router {
 
 
 const mount = (app, context, middlewareRegistry) => {
-  const router = new Router(app, context, middlewareRegistry)
+  const router = new Router(app, context, middlewareRegistry, new ControllerFactory(context))
   const routes = require(path.join(context.config.rootDir, 'routes.js'))
   return routes(context, router)
 }
 
-module.exports = mount
+module.exports.Router = Router
+module.exports.default = mount
