@@ -107,27 +107,84 @@ describe("Route namespaces", () => {
     await request(app).get("/first/ping").expect(200)
   });
 
-  //TODO Apply middleware to namespace
+  test('nested namespaces', async () => {
+    const routes = (context, appRouter) => {
+      appRouter.namespace('/first', (namespaceRouter) => {
+        namespaceRouter.namespace('/second', (nestedNamespaceRouter) => {
+          nestedNamespaceRouter.get('/ping', (req, res) => res.send("PONG"))
+        })
+      })
+    }
+    const app = setupRouter(routes, context())
+    await request(app).get("/first/second/ping").expect(200)
+  });
+
+  test('namespaced middleware', async () => {
+    const middleware = (req, res, next) => { res.locals.one = "1"; next()}
+    middlewareStub.get.returnsArg(0)
+    const routes = (context, appRouter) => {
+      appRouter.get('/no-middleware', (req, res) => res.json(res.locals))
+      appRouter.namespace('/first', middleware, (namespaceRouter) => {
+        namespaceRouter.get('/with-middleware', (req, res) => res.json(res.locals))
+      })
+    }
+    const app = setupRouter(routes, context())
+    const noMiddlewareResponse = await request(app).get("/no-middleware").expect(200)
+    const withMiddlewareResponse = await request(app).get("/first/with-middleware").expect(200)
+
+    expect(noMiddlewareResponse.body).toEqual({})
+    expect(withMiddlewareResponse.body).toEqual({ one: "1"})
+  });
 })
 
+describe("Middleware", () => {
+  test('Unscoped middleware applies to all routes below', async () => {
+    const middleware = (req, res, next) => { res.locals.one = "1"; next()}
+    middlewareStub.get.returnsArg(0)
+    const routes = (context, appRouter) => {
+      appRouter.get('/no-middleware', (req, res) => res.json(res.locals))
+      appRouter.middleware(middleware)
+      appRouter.get('/with-middleware', (req, res) => res.json(res.locals))
+    }
+    const app = setupRouter(routes, context())
+    const noMiddlewareResponse = await request(app).get("/no-middleware").expect(200)
+    const withMiddlewareResponse = await request(app).get("/with-middleware").expect(200)
 
-/*
-* To test
-* namespace('/api', m1, m2, (apiRouter) => {
-*
-*   apiRouter.get('/whatever', "some#act") < - should apply m1, m2 to only this route
-* }
-*
-* middleware("verifyLogin") < - should apply to everything below
-* middleware("/targeted", "m3") < - should apply to everything below
-*
-* router.get("/secret", "some#authed") < - not targeted
-* router.get("/targeted/thing", "some#thing") < - targeted, should apply m3
-*
-* middleware("m4", (mwRouter) => {
-*   mwRouter.get('/random', "random#route") < - should be only thing targeted by m4
-* })
-*
-* * router.get("/logout", "random#logout") < - should NOT apply m4
-* */
+    expect(noMiddlewareResponse.body).toEqual({})
+    expect(withMiddlewareResponse.body).toEqual({ one: "1"})
+  });
+
+  test('Scoped middleware applies to all routes that match', async () => {
+    const middleware = (req, res, next) => { res.locals.one = "1"; next()}
+    middlewareStub.get.returnsArg(0)
+    const routes = (context, appRouter) => {
+      appRouter.middleware('/match', middleware)
+      appRouter.get('/no-middleware', (req, res) => res.json(res.locals))
+      appRouter.get('/match/with-middleware', (req, res) => res.json(res.locals))
+    }
+    const app = setupRouter(routes, context())
+    const noMiddlewareResponse = await request(app).get("/no-middleware").expect(200)
+    const withMiddlewareResponse = await request(app).get("/match/with-middleware").expect(200)
+
+    expect(noMiddlewareResponse.body).toEqual({})
+    expect(withMiddlewareResponse.body).toEqual({ one: "1"})
+  });
+
+  test('Middleware blocks applies middleware to all routes inside', async () => {
+    const middleware = (req, res, next) => { res.locals.one = "1"; next()}
+    middlewareStub.get.returnsArg(0)
+    const routes = (context, appRouter) => {
+      appRouter.middleware(middleware, (middlewareRouter) => {
+        middlewareRouter.get('/with-middleware', (req, res) => res.json(res.locals))
+      })
+      appRouter.get('/no-middleware', (req, res) => res.json(res.locals))
+    }
+    const app = setupRouter(routes, context())
+    const noMiddlewareResponse = await request(app).get("/no-middleware").expect(200)
+    const withMiddlewareResponse = await request(app).get("/with-middleware").expect(200)
+
+    expect(noMiddlewareResponse.body).toEqual({})
+    expect(withMiddlewareResponse.body).toEqual({ one: "1"})
+  });
+})
 

@@ -4,22 +4,24 @@ const ControllerFactory = require('./controllers/factory')
 const actionWrapper = require('./controllers/action-wrapper')
 
 class Router {
-  constructor(router, context, middlewareRegistry, controllerFactory) {
+  constructor(router, context, middlewareRegistry, controllerFactory, scopedMiddleware=[]) {
     this.router = router
     this.context = context
     this.middlewareRegistry = middlewareRegistry
     this.controllerFactory = controllerFactory
+    this.scopedMiddleware = scopedMiddleware
   }
 
   route(method) {
-    const path = arguments[1]
-    const handler = arguments[arguments.length -1]
-    const middleWare = this.middlewareRegistry.get(Object.values(arguments).slice(2, -1))
-    if (typeof handler === 'function') {
+    const path = this._parsePath(arguments[1])
+    const handler = this._parseHandler(arguments)
+    const middleWare = this.middlewareRegistry.get(this._parseMiddleware(arguments,2, -1)).concat(this.scopedMiddleware)
+
+    if (handler) {
       return this.router[method](path, middleWare, handler)
     }
 
-    const [controllerName, action] = handler.split('#')
+    const [controllerName, action] = arguments[arguments.length -1].split('#')
     const controller = this.controllerFactory.get(controllerName, action)
     return this.router[method](path, middleWare, actionWrapper(controller[action]))
   }
@@ -49,32 +51,56 @@ class Router {
   }
 
   namespace() {
-    const path = arguments[0], block = arguments[arguments.length - 1]
+    const path = this._parsePath(arguments[0]), block = this._parseNestedRouter(arguments)
     const namespaceRouter = new express.Router()
-    const middleWare = this.middlewareRegistry.get(Object.values(arguments).slice(1, -1))
+
+    const middleWare = this.middlewareRegistry.get(this._parseMiddleware(arguments, 1, -1))
     if (middleWare.length) {
       namespaceRouter.use(middleWare)
     }
+
     block(new Router(namespaceRouter, this.context, this.middlewareRegistry, this.controllerFactory))
-    this.router.use(path, namespaceRouter)
-  }
 
-  //TODO clean, figure out all scenarios want to cover, figure out, test?
-  middleware() {
-    let routerParams = []
-    let middwareMethodNames = Object.values(arguments)
-
-    if (arguments[0].includes("/")) {
-      const path = arguments[0]
-      routerParams = [path]
-      middwareMethodNames = middwareMethodNames.slice(1)
+    if (path) {
+      return this.router.use(path, namespaceRouter)
     }
-
-    const middleWare = this.middlewareRegistry.get(middwareMethodNames)
-    routerParams.push(...middleWare)
-    return this.router.use(...routerParams)
+    return this.router.use(namespaceRouter)
   }
 
+  middleware() {
+    const path = this._parsePath(arguments[0])
+    const block = this._parseNestedRouter(arguments)
+    const middlewareStartsAt = path ? 1 : 0
+
+    if (block) {
+      const middleWare = this.middlewareRegistry.get(this._parseMiddleware(arguments, 0, -1))
+      const namespaceRouter = new express.Router()
+      block(new Router(namespaceRouter, this.context, this.middlewareRegistry, this.controllerFactory, middleWare))
+      return this.router.use(namespaceRouter)
+    }
+    const middleWare = this.middlewareRegistry.get(this._parseMiddleware(arguments, middlewareStartsAt))
+
+    if (path) {
+      return this.router.use(path, middleWare)
+    }
+    return this.router.use(middleWare)
+  }
+
+  _parsePath(maybePath) {
+    return typeof maybePath === 'string' && maybePath.includes("/") ? maybePath : null
+  }
+
+  _parseHandler(args) {
+    return typeof args[args.length -1] === 'function' ? args[args.length -1] : null
+  }
+
+  _parseNestedRouter(args) {
+    return typeof args[args.length -1] === 'function' && args[args.length -1].length === 1 ? args[args.length -1] : null
+  }
+
+  _parseMiddleware(args, fromIndex, toIndex) {
+    return toIndex ? Object.values(args).slice(fromIndex, toIndex) : Object.values(args).slice(fromIndex)
+  }
 
 }
 
