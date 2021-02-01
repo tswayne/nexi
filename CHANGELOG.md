@@ -1,5 +1,8 @@
 # Change Log
 
+## [1.1.0] - 1/31/2021
+- Large router extension to support middleware scoped to a path and middleware blocks
+
 ## [1.0.3] - 1/26/2021
 - Fix initializer directory when app overrides rootDir
 - Bump dependencies

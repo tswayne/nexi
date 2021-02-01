@@ -1,4 +1,5 @@
 [![npm](https://img.shields.io/npm/v/nexi.svg)](https://www.npmjs.com/package/nexi)
+[![Build Status](https://travis-ci.com/tswayne/nexi.svg?branch=master)](https://travis-ci.com/tswayne/nexi)
 
 # Nexi
 ### A rail-ish framework for node.js
