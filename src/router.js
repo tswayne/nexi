@@ -112,4 +112,4 @@ const mount = (app, context, middlewareRegistry) => {
 }
 
 module.exports.Router = Router
-module.exports.default = mount
+module.exports.route = mount

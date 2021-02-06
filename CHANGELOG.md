@@ -1,5 +1,8 @@
 # Change Log
 
+## [1.1.0] - 2/6/2021
+- Bug fix - Fix router exports
+
 ## [1.1.0] - 1/31/2021
 - Large router extension to support middleware scoped to a path and middleware blocks
 

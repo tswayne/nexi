@@ -2,7 +2,7 @@ const express = require('express')
 const decorate = require('./decorators/decorator')
 const initialize = require('./initializers/initializer')
 const Middleware = require('./middleware/middleware')
-const router = require('./router')
+const { route } = require('./router')
 const setupViews = require('./views/setup-views')
 
 class Server {
@@ -26,7 +26,7 @@ class Server {
       await middleware.setup()
 
       middleware.preRequest.mount(app)
-      router(app, context, middleware.registry)
+      route(app, context, middleware.registry)
       middleware.postRequest.mount(app)
 
       await app.listen(config.port, '0.0.0.0', done)
