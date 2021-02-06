@@ -1,6 +1,10 @@
 # Change Log
 
-## [1.1.0] - 2/6/2021
+## [1.2.0] - 2/6/2021
+- Cleaner boot file & handling
+- Extended waterline configuration
+
+## [1.1.1] - 2/6/2021
 - Bug fix - Fix router exports
 
 ## [1.1.0] - 1/31/2021
