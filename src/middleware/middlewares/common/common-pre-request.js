@@ -5,11 +5,11 @@ const responseTime = require('./response-time')
 const requestMeta = require('./request-meta')
 const compression = require('compression')
 
-module.exports = (app, { logger }) => {
+module.exports = (app, { logger, config }) => {
   app.use(responseTime())
   app.use(compression())
   app.use(requestMeta())
-  app.use(helmet())
+  app.use(helmet({ contentSecurityPolicy: config.stage !== 'development' }))
   app.use(requestLogger(logger))
   app.use(bodyParser.json())
   app.use(bodyParser.urlencoded({ extended: false }))
