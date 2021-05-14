@@ -1,6 +1,6 @@
 {
   "name": "nexi",
-  "version": "1.2.2",
+  "version": "1.2.3",
   "description": "Nodejs rails-ish port",
   "main": "index.js",
   "scripts": {
