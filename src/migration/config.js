@@ -16,6 +16,7 @@ module.exports = {
     user: config.database.user,
     database: config.database.name,
     password: config.database.password,
-    host: config.database.host
+    host: config.database.host,
+    port: config.database.port || 3306
   }
 }
