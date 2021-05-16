@@ -1,5 +1,17 @@
 # Change Log
 
+## [1.2.4] - 5/13/2021
+- Fix error reporter's require path to use src root
+
+## [1.2.3] - 5/13/2021
+- Temporarily fully disable helmet's contentSecurityPolicy
+
+## [1.2.2] - 5/13/2021
+- add port to migrate config, package bumps
+
+## [1.2.1] - 2/15/2021
+- Disable helmet's contentSecurityPolicy locally to avoid wonky browser behavior
+
 ## [1.2.0] - 2/6/2021
 - Cleaner boot file & handling
 - Extended waterline configuration
