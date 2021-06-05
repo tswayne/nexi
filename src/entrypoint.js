@@ -1,6 +1,10 @@
 const path = require('path')
+const fs = require('fs')
 
 const srcDir = path.join(process.cwd(), 'src')
+const includesPath = path.join(srcDir, 'config/includes.js')
+if (fs.existsSync(includesPath)) { require(includesPath) }
+
 const Server = require('./server')
 const config = require('./config')(srcDir)
 const logger = require('./logging/logger')(config)

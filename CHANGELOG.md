@@ -1,5 +1,9 @@
 # Change Log
 
+## [1.3.0] - 6/5/2021
+- Add concept of "includes" file (./config/includes.js) that, if exists, is called before the app boots.  Provides support
+for things like instrumentation libraries that need to be required before anything else.
+
 ## [1.2.4] - 5/13/2021
 - Fix error reporter's require path to use src root
 
