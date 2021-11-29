@@ -11,6 +11,6 @@ module.exports = (app, { logger, config }) => {
   app.use(requestMeta())
   app.use(helmet({ contentSecurityPolicy: false }))
   app.use(requestLogger(logger))
-  app.use(bodyParser.json())
+  app.use(bodyParser.json(config.expressSettings.bodyParser))
   app.use(bodyParser.urlencoded({ extended: false }))
 }

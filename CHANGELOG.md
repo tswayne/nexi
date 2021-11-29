@@ -1,5 +1,8 @@
 # Change Log
 
+## [1.3.1] - 11/28/2021
+- Fix bodyparser lack of configurability 
+
 ## [1.3.0] - 6/5/2021
 - Add concept of "includes" file (./config/includes.js) that, if exists, is called before the app boots.  Provides support
 for things like instrumentation libraries that need to be required before anything else.
