@@ -1,5 +1,8 @@
 # Change Log
 
+## [1.4.0] - 3/19/2022
+- Library bumps and corresponding code changes
+
 ## [1.3.1] - 11/28/2021
 - Fix bodyparser lack of configurability 
 
