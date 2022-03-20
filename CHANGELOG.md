@@ -1,5 +1,8 @@
 # Change Log
 
+## [1.5.0] - 3/19/2022
+- Add cli support to inject context into node repl
+
 ## [1.4.0] - 3/19/2022
 - Library bumps and corresponding code changes
 
