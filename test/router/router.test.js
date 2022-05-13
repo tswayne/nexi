@@ -69,6 +69,14 @@ describe("Basic routing", () => {
     expect(controllerFactoryStub.get.calledWith("controller", 'action')).toBeTruthy()
   });
 
+  test('returns clean exception if action does not exist', async () => {
+    const routes = (context, appRouter) => { appRouter.any('/ping',  "controller#doesNotExist") }
+    controllerFactoryStub.get.returns(controller())
+    const toThrow = () => setupRouter(routes, context(), middlewareStub, controllerFactoryStub)
+    expect(toThrow).toThrow(Error);
+    expect(toThrow).toThrow("Controller action controller#doesNotExist for configured route does not exist.");
+  });
+
   test("can chain middleware functions", async () => {
     const middlewareOne = (req, res, next) => { res.locals.one = "1"; next()}
     const middlewareTwo = (req, res, next) => { res.locals.two = "2"; next()}

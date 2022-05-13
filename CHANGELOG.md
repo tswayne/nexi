@@ -1,5 +1,8 @@
 # Change Log
 
+## [1.5.2] - 5/12/2022
+- Better error message for undefined controller action
+
 ## [1.5.1] - 4/16/2022
 - Fix broken handlebars init caused by version bump 
 

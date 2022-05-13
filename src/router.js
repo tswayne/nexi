@@ -23,6 +23,9 @@ class Router {
 
     const [controllerName, action] = arguments[arguments.length -1].split('#')
     const controller = this.controllerFactory.get(controllerName, action)
+    if (!controller[action]) {
+      throw new Error(`Controller action ${controllerName}#${action} for configured route does not exist.`)
+    }
     return this.router[method](path, middleWare, actionWrapper(controller[action]))
   }
 
