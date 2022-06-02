@@ -17,7 +17,7 @@ module.exports = async (config, logger) => {
 
   const decorate = getAdditionalDecorators(config.rootDir)
   if (decorate) {
-    decorate(context)
+    await decorate(context)
   }
 
   return context

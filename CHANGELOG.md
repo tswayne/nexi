@@ -1,5 +1,8 @@
 # Change Log
 
+## [1.5.3] - 6/1/2022
+- Fix bug decorating async decorators 
+
 ## [1.5.2] - 5/12/2022
 - Better error message for undefined controller action
 
