@@ -1,5 +1,8 @@
 # Change Log
 
+## [1.6.0] - 6/9/2022
+- Enable other database adapters
+
 ## [1.5.3] - 6/1/2022
 - Fix bug decorating async decorators 
 
