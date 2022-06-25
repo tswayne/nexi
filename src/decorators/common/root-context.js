@@ -9,7 +9,7 @@ module.exports = async (config, logger) => {
   context.logger = logger
   context.reporter = errorReporter(config)
   if (config.redis) {
-    context.redis = redis(config)
+    context.redis = await redis(config)
   }
   if (config.database && !config.database.nexiDbAdapter) {
     context.models = await waterline(config)

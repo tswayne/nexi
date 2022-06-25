@@ -1,6 +1,9 @@
 # Change Log
 
-## [1.6.0] - 6/9/2022
+## [1.6.1] - 6/25/2022
+- Decorate redis v4 correctly
+
+- ## [1.6.0] - 6/9/2022
 - Enable other database adapters
 
 ## [1.5.3] - 6/1/2022
