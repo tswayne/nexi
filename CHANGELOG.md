@@ -1,5 +1,8 @@
 # Change Log
 
+## [1.6.2] - 6/25/2022
+- set default dns result order to ipv4 first for node 18+ support
+
 ## [1.6.1] - 6/25/2022
 - Decorate redis v4 correctly
 

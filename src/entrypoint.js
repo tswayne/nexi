@@ -1,5 +1,9 @@
 const path = require('path')
 const fs = require('fs')
+if (parseInt(process.versions.node.split('.')[0]) >= 18) {
+  const dns = require('dns');
+  dns.setDefaultResultOrder('ipv4first');
+}
 
 const srcDir = path.join(process.cwd(), 'src')
 const includesPath = path.join(srcDir, 'config/includes.js')
