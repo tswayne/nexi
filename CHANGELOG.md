@@ -1,6 +1,9 @@
 # Change Log
 
-## [1.6.3] - 6/26/2022
+## [1.6.4] - 6/26/2022
+- Add dns resolver fix to cli entrypoint
+
+- ## [1.6.3] - 6/26/2022
 - Dependency version bumps
 
 ## [1.6.2] - 6/25/2022
