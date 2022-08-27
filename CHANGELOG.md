@@ -1,5 +1,8 @@
 # Change Log
 
+## [1.6.5] - 8/27/2022
+- Package bumps
+
 ## [1.6.4] - 6/26/2022
 - Add dns resolver fix to cli entrypoint
 
