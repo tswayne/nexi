@@ -48,7 +48,7 @@
   "devDependencies": {
     "jest": "^27.5.1",
     "redis": "^4.0.6",
-    "sails-mysql": "^2.0.0",
+    "sails-mysql": "^3.0.0",
     "sinon": "^13.0.1",
     "supertest": "^6.2.2",
     "waterline-standalone-core": "^1.2.0"
