@@ -1,11 +1,15 @@
 
 const requestMetaMiddleware = ({ config, redis }, overrides={}) => {
   const session = require('express-session')
-  const RedisStore = require('connect-redis')(session)
-
   const { application, sessionSecret } = config
+  let store
+  if (config.redis) {
+    const RedisStore = require('connect-redis')(session)
+    store = new RedisStore({ prefix: `${application}-sess`, client: redis})
+  }
+
   return session(Object.assign({
-    store: new RedisStore({ prefix: `${application}-sess`, client: redis}),
+    store,
     name: application,
     secret: sessionSecret,
     resave: false,

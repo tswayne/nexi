@@ -1,6 +1,6 @@
 {
   "name": "nexi",
-  "version": "1.6.5",
+  "version": "1.6.6",
   "description": "Nodejs rails-ish port",
   "main": "index.js",
   "scripts": {
@@ -40,7 +40,7 @@
     "http-errors": "^2.0.0",
     "http-status": "^1.5.2",
     "knex": "^2.2.0",
-    "pino": "^8.4.2",
+    "pino": "^8.6.1",
     "pino-pretty": "^9.1.0",
     "response-time": "^2.3.2",
     "uuid": "^8.3.2"
