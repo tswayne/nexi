@@ -1,5 +1,10 @@
 # Change Log
 
+## [1.7.0] - 12/17/2022
+- Enable migration client for package & database flexibility (no longer bound to mysql)
+- Expose knex migrate migration wrapper
+- Package bumps
+
 ## [1.6.6] - 9/28/2022
 - Default to memory store for session if redis is not set
 

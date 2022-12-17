@@ -8,7 +8,7 @@ const srcDir = path.join(currentDir, 'src')
 const config = require('../config')(srcDir)
 
 module.exports = {
-  client: 'mysql',
+  client: config.database.migrationClient && config.database.migrationClient || 'mysql',
   migrations: {
     directory: path.resolve(currentDir, './migrations'),
   },

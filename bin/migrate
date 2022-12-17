@@ -11,7 +11,12 @@ if (!currentDir) {
 
 const exec_path = path.resolve(currentDir, './node_modules/.bin/knex')
 
-
-require('child_process')
-  .spawn(`${exec_path}`, ['--knexfile', './node_modules/nexi/src/migration/config.js', `migrate:${method}`, ...params], {stdio:'inherit'})
-  .on('exit', function (error) {});
+if (method.includes('help') || method === '-h') {
+  require('child_process')
+    .spawn(`${exec_path}`, ['--knexfile', './node_modules/nexi/src/migration/config.js', '--help'], {stdio:'inherit'})
+    .on('exit', function (error) {});
+} else {
+  require('child_process')
+    .spawn(`${exec_path}`, ['--knexfile', './node_modules/nexi/src/migration/config.js', `migrate:${method}`, ...params], {stdio:'inherit'})
+    .on('exit', function (error) {});
+}
