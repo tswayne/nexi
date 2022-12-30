@@ -1,5 +1,8 @@
 # Change Log
 
+## [1.7.2] - 12/29/2022
+- Shuffle migration wrapper
+
 ## [1.7.1] - 12/29/2022
 - Expose knex migrate migration wrapper
 
