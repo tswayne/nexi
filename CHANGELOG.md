@@ -1,8 +1,10 @@
 # Change Log
 
+## [1.7.1] - 12/29/2022
+- Expose knex migrate migration wrapper
+
 ## [1.7.0] - 12/17/2022
 - Enable migration client for package & database flexibility (no longer bound to mysql)
-- Expose knex migrate migration wrapper
 - Package bumps
 
 ## [1.6.6] - 9/28/2022

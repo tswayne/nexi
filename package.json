@@ -1,6 +1,6 @@
 {
   "name": "nexi",
-  "version": "1.7.0",
+  "version": "1.7.1",
   "description": "Nodejs rails-ish port",
   "main": "index.js",
   "scripts": {
@@ -21,7 +21,7 @@
     "framework"
   ],
   "engines": {
-    "node": ">=11.0.0"
+    "node": ">=16.0.0"
   },
   "homepage": "https://github.com/tswayne/nexi#readme",
   "bugs": {

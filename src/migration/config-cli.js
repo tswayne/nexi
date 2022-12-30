@@ -1,4 +1,6 @@
 const path = require('path');
+const knexConfig = require('./knex-config')
+
 let currentDir = process.env.INIT_CWD
 if (!currentDir) {
   currentDir = process.cwd().split('/node_modules/nexi/src/migration')[0]
@@ -7,16 +9,8 @@ if (!currentDir) {
 const srcDir = path.join(currentDir, 'src')
 const config = require('../config')(srcDir)
 
-module.exports = {
-  client: config.database.migrationClient && config.database.migrationClient || 'mysql',
+module.exports = Object.assign( {}, knexConfig(config), {
   migrations: {
     directory: path.resolve(currentDir, './migrations'),
-  },
-  connection: {
-    user: config.database.user,
-    database: config.database.name,
-    password: config.database.password,
-    host: config.database.host,
-    port: config.database.port || 3306
   }
-}
+})
