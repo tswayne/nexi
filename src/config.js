@@ -5,7 +5,10 @@ const baseConfig = {
   application: 'Framework application',
   env: process.env.NODE_ENV,
   stage: process.env.STAGE || 'development',
-  sessionSecret: 'cat',
+  sessionSettings: {
+    secret: 'cat',
+    prefix: null
+  },
   port: 3000,
   expressSettings: {
 

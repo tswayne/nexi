@@ -1,5 +1,8 @@
 # Change Log
 
+## [1.7.3] - 12/31/2022
+- Better session configuration
+
 ## [1.7.2] - 12/29/2022
 - Shuffle migration wrapper
 
