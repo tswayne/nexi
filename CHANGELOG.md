@@ -1,5 +1,8 @@
 # Change Log
 
+## [1.8.1] - 12/31/2022
+- Clean up api error handling and response schema
+
 ## [1.7.3] - 12/31/2022
 - Better session configuration
 
