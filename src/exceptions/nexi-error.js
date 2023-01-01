@@ -1,6 +1,6 @@
 
 class NexiError extends Error {
-  constructor(message, { displayError, statusCode, messages }) {
+  constructor(message, { displayError, statusCode, messages }={}) {
     super(message)
     this.statusCode = statusCode
     this.messages = messages
