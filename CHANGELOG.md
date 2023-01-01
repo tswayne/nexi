@@ -1,6 +1,9 @@
 # Change Log
 
-## [1.8.2] - 12/31/2022
+## [1.8.3] - 1/1/2023
+- Cleaner default error reporter logging
+
+- ## [1.8.2] - 12/31/2022
 - Fix nexi error constructor
 
 ## [1.8.1] - 12/31/2022

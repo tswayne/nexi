@@ -7,7 +7,7 @@ module.exports = async (config, logger) => {
 
   context.config = config
   context.logger = logger
-  context.reporter = errorReporter(config)
+  context.reporter = errorReporter(config, logger)
   if (config.redis) {
     context.redis = await redis(config)
   }

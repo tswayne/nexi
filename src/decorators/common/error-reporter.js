@@ -1,18 +1,12 @@
 const fs = require('fs')
 const path = require('path')
 
-const defaultReporter = {
-  info: (message) => { console.log(message) },
-  error: (error) => {
-    if (error instanceof Error) {
-      console.trace(error)
-    } else {
-      console.log(error)
-    }
-  }
-}
+const defaultReporter = (logger) => ({
+  info: (message) => { logger.info(message) },
+  error: (error) => { logger.error(error) }
+})
 
-const errorReporter = (config, overrides={}) => {
+const errorReporter = (config, logger) => {
   const filePath = path.join(config.srcDir, `config/error-reporter.js`)
   if (fs.existsSync(filePath)) {
     const reporter = require(filePath)(config)
@@ -20,7 +14,7 @@ const errorReporter = (config, overrides={}) => {
       return reporter
     }
   }
-  return defaultReporter
+  return defaultReporter(logger)
 }
 
 module.exports = errorReporter
