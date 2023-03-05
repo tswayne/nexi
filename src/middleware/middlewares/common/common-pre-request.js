@@ -9,7 +9,7 @@ module.exports = (app, { logger, config }) => {
   app.use(responseTime())
   app.use(compression())
   app.use(requestMeta())
-  app.use(helmet({ contentSecurityPolicy: false }))
+  app.use(helmet(config.helmet))
   app.use(requestLogger(logger))
   app.use(bodyParser.json(config.expressSettings.bodyParser))
   app.use(bodyParser.urlencoded({ extended: false }))

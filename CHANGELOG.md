@@ -1,5 +1,8 @@
 # Change Log
 
+## [1.8.4] - 3/5/2023
+- Pass helmet options through to enable custom config
+
 ## [1.8.3] - 1/1/2023
 - Cleaner default error reporter logging
 

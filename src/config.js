@@ -13,6 +13,9 @@ const baseConfig = {
   expressSettings: {
 
   },
+  helmet: {
+    contentSecurityPolicy: false
+  },
   logger: {
     prettyPrint: true,
     overrides: {}
