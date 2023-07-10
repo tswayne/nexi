@@ -1,5 +1,8 @@
 # Change Log
 
+## [1.9.0] - 7/9/2023
+- Enable error handlers as middleware by respecting error if exists in function definition
+
 ## [1.8.4] - 3/5/2023
 - Pass helmet options through to enable custom config
 
