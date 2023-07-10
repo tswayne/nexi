@@ -5,7 +5,7 @@ const requestMetaMiddleware = ({ config, redis }) => {
   let { prefix, secret, ...overrides } = sessionSettings;
   let store
   if (config.redis) {
-    const RedisStore = require('connect-redis')(session)
+    const RedisStore = require('connect-redis').default
     const sessionPrefix = prefix ? prefix : application
     store = new RedisStore({ prefix: `${sessionPrefix}-sess`, client: redis})
   }
