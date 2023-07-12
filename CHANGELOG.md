@@ -1,5 +1,8 @@
 # Change Log
 
+## [1.9.2] - 7/11/2023
+- Fix action wrapper/express param management
+ 
 ## [1.9.1] - 7/9/2023
 - Fix redis instrumentation with upgrade
 

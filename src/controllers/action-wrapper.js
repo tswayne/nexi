@@ -1,11 +1,11 @@
 const { isAsync } = require('../utils')
 
 const asyncWrapper = (method, context) => {
-  if (method.length < 2 && method.length > 3) {
+  if (method.length < 2 || method.length > 4) {
     throw new Error("Invalid method signature")
   }
   let frameworkAction
-  if (method.length === 2) {
+  if (method.length < 4) {
     frameworkAction = async (req, res, next) => {
       try {
         if (context) {
@@ -32,11 +32,11 @@ const asyncWrapper = (method, context) => {
 }
 
 const syncWrapper = (method, context) => {
-  if (method.length < 2 && method.length > 3) {
+  if (method.length < 2 || method.length > 4) {
     throw new Error("Invalid method signature")
   }
   let frameworkAction
-  if (method.length === 2) {
+  if (method.length < 4) {
     frameworkAction = (req, res, next) => {
       try {
         if (context) {
