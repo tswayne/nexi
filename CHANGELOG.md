@@ -1,5 +1,9 @@
 # Change Log
 
+## [1.10.0] - 8/11/2023
+- Expose express app through context
+- Dependency bumps
+
 ## [1.9.2] - 7/11/2023
 - Fix action wrapper/express param management
  

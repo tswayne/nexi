@@ -12,8 +12,8 @@ const getAdditionalDecorators = (rootDir) => {
   return require(filePath)
 }
 
-module.exports = async (config, logger) => {
-  const context = await rootContext(config, logger)
+module.exports = async (expressApp, config, logger) => {
+  const context = await rootContext(expressApp, config, logger)
 
   const decorate = getAdditionalDecorators(config.rootDir)
   if (decorate) {

@@ -19,7 +19,7 @@ class Server {
       if (!config.apiMode) {
         setupViews(app, config)
       }
-      const context = await decorate(this.config, this.logger)
+      const context = await decorate(app, this.config, this.logger)
       await initialize(context)
 
       const middleware = new Middleware(context)
