@@ -16,7 +16,7 @@ const decorate = require('./decorators/decorator')
 const initialize = require('./initializers/initializer')
 
 const bootstrap = async () => {
-    const context = await decorate(config, logger)
+    const context = await decorate({}, config, logger)
     await initialize(context)
     return context
 }
