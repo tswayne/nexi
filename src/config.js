@@ -5,13 +5,13 @@ const baseConfig = {
   application: 'Framework application',
   env: process.env.NODE_ENV,
   stage: process.env.STAGE || 'development',
+  devLogger: false,
   sessionSettings: {
     secret: 'cat',
     prefix: null
   },
   port: 3000,
   expressSettings: {
-
   },
   helmet: {
     contentSecurityPolicy: false

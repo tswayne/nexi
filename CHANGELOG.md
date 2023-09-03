@@ -1,5 +1,8 @@
 # Change Log
 
+## [1.10.2] - 9/3/2023
+- Enable setting dev logger explicitly
+
 ## [1.10.0] - 8/11/2023
 - Expose express app through context
 - Dependency bumps
