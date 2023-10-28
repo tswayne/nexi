@@ -1,5 +1,8 @@
 # Change Log
 
+## [1.10.3] - 10/28/2023
+- Version bumps
+
 ## [1.10.2] - 9/3/2023
 - Enable setting dev logger explicitly
 
