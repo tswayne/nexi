@@ -13,5 +13,5 @@ module.exports = (app, config) => {
     layoutsDir: path.join(viewsRootDir, 'layout')
   }))
   app.set('view engine', 'handlebars')
-  app.use('/assets', express.static(path.join(config.srcDir, config.assetsPath)))
+  app.use('/assets', express.static(path.join(config.srcDir, config.assetsPath), config.assetConfig))
 };

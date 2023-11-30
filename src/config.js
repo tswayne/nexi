@@ -21,7 +21,8 @@ const baseConfig = {
     overrides: {}
   },
   rootDirectory: './',
-  assetsPath: '../assets'
+  assetsPath: '../assets',
+  assetConfig: {}
 }
 
 const getConfig = (srcDir) => {

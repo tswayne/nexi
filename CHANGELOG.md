@@ -1,5 +1,8 @@
 # Change Log
 
+## [1.10.4] - 11/29/2023
+- Expose express asset config
+
 ## [1.10.3] - 10/28/2023
 - Version bumps
 
