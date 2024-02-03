@@ -1,5 +1,8 @@
 # Change Log
 
+## [1.10.5] - 2/3/2023
+- Small migrate helper option to pass config through without parsing
+
 ## [1.10.4] - 11/29/2023
 - Expose express asset config
 
