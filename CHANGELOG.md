@@ -1,5 +1,8 @@
 # Change Log
 
+## [1.10.6] - 2/4/2023
+- Close the knex connection after running migrations in migration helper
+
 ## [1.10.5] - 2/3/2023
 - Small migrate helper option to pass config through without parsing
 
