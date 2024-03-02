@@ -1,6 +1,9 @@
 # Change Log
 
 ## [1.10.7] - 3/2/2024
+- More error options pt 2
+
+## [1.10.7] - 3/2/2024
 - More error options
 
 ## [1.10.6] - 2/4/2024
