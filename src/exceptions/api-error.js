@@ -1,20 +1,25 @@
 const httpError = require('http-errors')
 const status = require('http-status')
 
+// This class is to organize serializing error messages and should not be created directly.
+// NexiError is the data model that this reads from
 class ApiError extends Error {
   constructor(error) {
     super(error.message)
     this.stack = error.stack
-    const { message, displayError, statusCode=500, messages} = error
+    const { message, displayError, statusCode=500, messages, errors} = error
 
     this.statusCode = statusCode
-    this.type =  httpError(statusCode).name // update to type
-    this.error = status[statusCode] // update to error
+    this.type =  httpError(statusCode).name
+    this.error = status[statusCode]
     this.displayError = displayError
     this.message = message || this.error // Because it's an Error, needs _something_ here
 
     if (messages) {
       this.messages = messages
+    }
+    if (errors) {
+      this.errors = errors
     }
   }
 
@@ -31,6 +36,9 @@ class ApiError extends Error {
     }
     if (this.messages) {
       base.messages = this.messages
+    }
+    if (this.errors) {
+      base.errors = this.errors
     }
     return base
   }

@@ -1,6 +1,7 @@
 const ApiError = require('../../../exceptions/api-error')
 
 const errorHandlerMiddleware = ({ reporter, logger, config }) => {
+  // Assumes the shape of error looks like a NexiError.  ApiError reads from error and serializes safely with defaults.
   const errorHandler = (error, req, res, next) => {
     if (config.stage === 'development') {
       error.displayError = true
