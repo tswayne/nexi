@@ -10,7 +10,8 @@ const errorHandlerMiddleware = ({ reporter, logger, config }) => {
     if (error.statusCode === 404) { return res.status(404).send(new ApiError(error).serialize())}
 
     if (error.validationError) {
-      const response = new ApiError({ ...error, statusCode: 422, message: 'Validation Errors' })
+      error.statusCode = 422
+      const response = new ApiError(error)
       return res.status(422).send(response.serialize())
     }
     if (error.report !== false) {
