@@ -15,7 +15,7 @@ class ApiError extends Error {
     this.displayError = displayError
 
     // Message is intended for the consumer, but is only displayed if explicitly told to.
-    this.message = message || this.error // Because it's an Error, needs _something_ here
+    this.message = message && message !== 'null' || this.error // Because it's an Error, needs _something_ here
 
     // Use one of these to list key value errors.  Useful for object validation.
     if (messages) {

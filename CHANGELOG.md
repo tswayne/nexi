@@ -1,5 +1,8 @@
 # Change Log
 
+## [1.10.10] - 3/2/2024
+- Another error fix
+
 ## [1.10.9] - 3/2/2024
 - And fix how validation errors are handled
 
