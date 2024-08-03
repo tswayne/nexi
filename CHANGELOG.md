@@ -1,5 +1,9 @@
 # Change Log
 
+## [2.0.0] - 8/3/2024
+- Remove waterline as default db adapter
+- Package bumps
+
 ## [1.10.10] - 3/2/2024
 - Another error fix
 
