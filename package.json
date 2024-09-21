@@ -1,6 +1,6 @@
 {
   "name": "nexi",
-  "version": "2.0.0",
+  "version": "2.0.1",
   "description": "Nodejs rails-ish port",
   "main": "index.js",
   "scripts": {
@@ -28,19 +28,19 @@
     "url": "https://github.com/tswayne/nexi/issues"
   },
   "dependencies": {
-    "body-parser": "^1.20.2",
+    "body-parser": "^1.20.3",
     "class-bindall": "^1.0.0",
     "compression": "^1.7.4",
     "connect-redis": "^7.1.1",
     "deepmerge": "^4.3.1",
-    "express": "^4.19.2",
-    "express-handlebars": "^7.1.3",
+    "express": "^4.21.0",
+    "express-handlebars": "^8.0.1",
     "express-session": "^1.18.0",
     "helmet": "^7.1.0",
     "http-errors": "^2.0.0",
     "http-status": "^1.7.4",
     "knex": "^3.1.0",
-    "pino": "^9.3.2",
+    "pino": "^9.4.0",
     "pino-pretty": "^11.2.2",
     "response-time": "^2.3.2",
     "uuid": "^10.0.0"
@@ -48,7 +48,7 @@
   "devDependencies": {
     "jest": "^29.7.0",
     "redis": "^4.7.0",
-    "sinon": "^18.0.0",
+    "sinon": "^18.0.1",
     "supertest": "^7.0.0"
   },
   "files": [
@@ -60,5 +60,6 @@
     "LICENSE"
   ],
   "author": "tswayne",
-  "license": "ISC"
+  "license": "ISC",
+  "packageManager": "yarn@1.22.22+sha512.a6b2f7906b721bba3d67d4aff083df04dad64c399707841b7acf00f6b133b7ac24255f2652fa22ae3534329dc6180534e98d17432037ff6fd140556e2bb3137e"
 }
