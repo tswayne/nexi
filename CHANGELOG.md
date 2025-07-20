@@ -1,4 +1,9 @@
 # Change Log
+## [3.0.1] - 7/20/2025
+- Fix middleware that needs context, small tradeoff is that app middleware can't be used as catch-alls
+
+## [3.0.0] - 11/23/2024
+- Express 5
 
 ## [2.0.0] - 8/3/2024
 - Remove waterline as default db adapter
